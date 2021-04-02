@@ -26,7 +26,7 @@ function checksCreateTodosUserAvailability(request, response, next) {
   const { user } = request;
 
   if (user.pro === false && user.todos.length >= 10) {
-    return response.status(403);
+    return response.status(403).json({ error: 'You have exceeded the task registration limit for the free plan.' });
   }
 
   return next();
